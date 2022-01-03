@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import requests
-import os
 import re
 from pymongo import MongoClient
 from pymongo.errors import *
@@ -162,7 +161,11 @@ def get_data(req):
         else:
             city = location
             metro = None
-        employer = delete_char(job.find('a', {'data-qa': 'vacancy-serp__vacancy-employer'}).text)
+        employer = job.find('a', {'data-qa': 'vacancy-serp__vacancy-employer'})
+        if not employer:
+            pass
+        else:
+            employer = delete_char(employer.text)
         vac_date_search = job.find('span', {'data-qa': 'vacancy-serp__vacancy-date'})
         if not vac_date_search:
             vac_day = None
