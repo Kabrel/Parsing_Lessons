@@ -232,6 +232,7 @@ def make_request(area=None, text=None):
     print(f'Загрузка данных: {params["page"]}%')
     if not next_btn:
         print(f"Загрузка завершена. Добавлено {job_counter['count']} вакансий.")
+        print('----------------')
         return
     else:
         params['page'] += 1
@@ -256,6 +257,7 @@ def search_vacancy(val):
         print(doc['salary_currency'])
         print('----------------')
     print(f"Найдено {jobs_collection.count_documents({'$or': [{'salary_min': {'$gte': val}}, {'salary_max': {'$gte': val}}]})} вакансий.")
+    print('----------------')
 
 
 def init():
