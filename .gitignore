@@ -112,3 +112,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Lesson 5/chromedriver.exe
